@@ -3,7 +3,15 @@
 <h2><%= @restaurant.phone_number %></h2>
 <h2><%= @restaurant.category %></h2>
 
-<%= link_to "Edit", edit_restaurant_path %>
+
+<%=simple_form_for [@restaurant, @review] do |f| %>
+  <%= f.input :rating %>
+  <%= f.input :content %>
+  <%= f.submit "Submit Review", class: "btn btn-primary"%>
+<%end %>
+
+
+<%= link_to "Edit", edit_restaurant_path(@restaurant) %>
 <%= link_to "Back", restaurants_path %>
-<%= link_to "Make a review", new_restaurant_review_path %>
-<%# <%= link_to "Remove a review", review_path(review), method :delete, data: {confirm: "Are you sure?"} %>
+
+<%#= link_to "Remove a review", review_path(review), method :delete, data: {confirm: "Are you sure?"} %>
